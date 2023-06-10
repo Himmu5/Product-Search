@@ -1,24 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Input from "./Components/UI-Components/Input";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className=" flex justify-center  bg-cover bg-no-repeat h-screen bg-Home-BG ">
+      <div className="mt-10 w-full max-w-4xl"> 
+        <Input extraClasses=" w-full focus:outline-none " placeholder="Search" />
+      </div>
+
+      <div className="trend-suggetion ">
+
+      </div>
     </div>
   );
 }
