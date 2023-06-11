@@ -15,7 +15,7 @@ const ProductDetail: FC<P> = ({
   selectedProducts,
 }) => {
   return (
-    <div className="flex flex-col  ">
+    <div className=" w-56 flex flex-col  ">
       <div className="h-56 my-2 relative w-full flex flex-col group ">
         <img
           src={product.thumbnail}

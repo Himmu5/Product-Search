@@ -6,8 +6,8 @@ import { FC, useEffect, useState } from "react";
 
 type P = {
   products: Product[];
-  filter:{ category: string; rating: number; price: number },
-  setFilter: (f: { category: string; rating: number; price: number }) => void;
+  filter:{ category: string[]; rating: number[]; price: number },
+  setFilter: (f: { category: string[]; rating: number[]; price: number }) => void;
 };
 
 const FilterProduct: FC<P> = ({ products , filter ,setFilter }) => {
@@ -20,6 +20,52 @@ const FilterProduct: FC<P> = ({ products , filter ,setFilter }) => {
     ] as string[];
     setCategory(unique);
   }, [products]);
+  
+  function handleFilter(s:string | number  , type :string){
+    if(type === 'category'){
+      let isThere = false;  
+      filter?.category?.map((e)=>{
+        if(e === s){
+          isThere = true;
+        }      
+      })
+      if(isThere){
+        let data = filter?.category.filter((category)=>{
+          return category !== s
+        })
+        setFilter({...filter , category : data});
+      }
+      else{ 
+        setFilter({...filter , category : [ ...filter?.category || [] , s as string ]})
+      }
+    }
+    if(type === "price"){
+      if(filter?.price === s){
+        setFilter({...filter, price : Infinity})
+      }
+      else{
+        setFilter({...filter, price: s as number})
+      }
+    }
+    if(type === "rating"){
+      let isThere = false;  
+      filter?.rating?.map((e)=>{
+        if(e === s){
+          isThere = true;
+        }      
+      })
+      if(isThere){
+        let data = filter?.rating.filter((category)=>{
+          return category !== s
+        })
+        setFilter({...filter , rating : data});
+      }
+      else{ 
+        setFilter({...filter , rating : [ ...filter?.rating || [] , s as number ]})
+      }
+    }
+  }
+  
 
   return (
     <div className="  ">
@@ -33,7 +79,7 @@ const FilterProduct: FC<P> = ({ products , filter ,setFilter }) => {
             return (
               index < 3 && (
                 <div className="flex items-center gap-2">
-                  <input type="checkbox" onChange={()=>setFilter({...filter , category : c})} />
+                  <input type="checkbox" onChange={()=>handleFilter(c , 'category')} />
                   <p>{c}</p>
                 </div>
               )
@@ -51,7 +97,7 @@ const FilterProduct: FC<P> = ({ products , filter ,setFilter }) => {
           {[...Array(2)].map((n , i) => {
             return (
               <div key={i}  className="flex items-center gap-2">
-                <input type="checkbox" onChange={()=>setFilter({...filter , price : (i+1) * 500 })} />
+                <input type="checkbox" onChange={()=>handleFilter((i+1) * 500 , 'price')} />
                 <p>UNDER {(i+1) * 500}</p>
               </div>
             );
@@ -68,7 +114,7 @@ const FilterProduct: FC<P> = ({ products , filter ,setFilter }) => {
           {[...Array(5)].map((i, key) => {
             return (
               <div  className="flex gap-2 items-center">
-                <input onChange={()=>setFilter({...filter , rating : key + 1})} type="checkbox" />
+                <input onChange={()=>handleFilter(key + 1 , 'rating')} type="checkbox" />
                 <p className="flex items-center gap-2">
                   {[...Array(key + 1)].map(() => {
                     return <AiTwotoneStar />;

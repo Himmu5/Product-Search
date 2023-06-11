@@ -1,35 +1,20 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import FilterProduct from "../UI-Components/FilterProduct";
 import withProducts from "../HOCs/withProducts";
 import { Product } from "../../models/products";
 import ProductDetail from "../UI-Components/Product";
 
 type P = {
-  products: Product[];
-  filter: { category: string; rating: number; price: number };
+  data: Product[];
 };
 
-const SearchResult: FC<P> = ({ products, filter }) => {
+const SearchResult: FC<P> = ({ data }) => {
   
-  let data = products;
-    
-    if (filter?.category) {
-      data = data?.filter((product) => {
-        return product.category === filter?.category;
-      });
-      
-    }
-    if (filter?.price) {
-      data = data.filter((product) => {
-        return product.price < filter?.price;
-      });
-    }
-    console.log(filter , " FIlter")
-    if (filter?.rating) {
-      data = data.filter((product) => {
-        return Math.round(product.rating) === filter?.rating;
-      });
-    }
+  // if (filter?.rating) {
+  //   data = data.filter((product) => {
+  //     return Math.round(product.rating) === filter?.rating;
+  //   });
+  // }
 
   return (
     <div className="bg-white mt-4 h-full">
@@ -41,8 +26,12 @@ const SearchResult: FC<P> = ({ products, filter }) => {
           </div>
 
           <div className=" w-full max-w-5xl mx-auto ">
-            <div className="grid grid-cols-4 gap-4 w-full">
-              {data.length === 0 && <div className="w-full text-2xl flex text-center">No Product</div>}
+            <div className="flex flex-wrap justify-center gap-4 w-full">
+              {data?.length === 0 && (
+                <div className="w-full text-2xl flex text-center">
+                  No Product
+                </div>
+              )}
               {data?.map((product) => {
                 return <ProductDetail product={product} />;
               })}

@@ -1,18 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Home from "./Components/Page/Home";
-import SearchResult from "./Components/Page/SearchResult";
-import { getProductsByQuery } from "./Apis/products";
 import { productContext } from "./Context/Products";
 import { Product } from "./models/products";
 
 function App() {
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
-  const [filter ,setFilter] = useState<{category : string , rating :number , price :number}>();
   const [ selectedProducts ,setSelectedProducts ] = useState<{[id:string]:Boolean}>({});
+  const [filter ,setFilter] = useState<{category : string[] , rating :number[] , price :number[]}>();
 
 
-  console.log(  "selectedProducts", selectedProducts)
+  console.log(  "filter ", filter)
   return (
     <div>
       <productContext.Provider
