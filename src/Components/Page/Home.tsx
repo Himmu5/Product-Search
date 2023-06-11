@@ -21,7 +21,7 @@ const Home: FC<P> = ({ products, setProducts }) => {
       getProductsByQuery(e.target.value).then((res) => {
         setProducts(res.products);
       });
-    }, 2000);
+    }, 500);
   }
 
 

@@ -8,12 +8,12 @@ import { Product } from "./models/products";
 function App() {
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
-  console.log("products", products);
+  const [filter ,setFilter] = useState<{category : string , rating :number , price :number}>();
 
   return (
     <div>
       <productContext.Provider
-        value={{ products, setProducts, loading, setLoading }}
+        value={{ products, setProducts, loading, setLoading , filter , setFilter}}
       >
         <Home />
       </productContext.Provider>
