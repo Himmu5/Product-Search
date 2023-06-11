@@ -27,7 +27,7 @@ const Trends: FC<P> = () => {
             <div className="space-y-1" key={Product.id}>
               <img
                 src={Product.avatar}
-                alt="product Image"
+                alt="product_Image"
                 className="h-48 w-40 rounded-lg"
               />
               <p className="text-xs text-500">{Product.title}</p>

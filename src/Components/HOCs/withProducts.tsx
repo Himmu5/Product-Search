@@ -1,4 +1,4 @@
-import { ComponentType, FC, useContext } from "react";
+import { ComponentType,  useContext } from "react";
 import { productContext } from "../../Context/Products";
 
 function withProducts(IncomingComponent:ComponentType<any>){

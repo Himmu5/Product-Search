@@ -37,7 +37,7 @@ const Home: FC<P> = ({ products, setProducts, filter }) => {
     });
     let temp = [] as Product[];
     d.map((a) => {
-      temp.push(...a);
+      return temp.push(...a);
     });
     return temp;
   }
@@ -60,12 +60,12 @@ const Home: FC<P> = ({ products, setProducts, filter }) => {
     });
     let temp = [] as Product[];
     d.map((a) => {
-      temp.push(...a);
+     return temp.push(...a);
     });
     data = [...temp]
   }
 
-  if(data.length == 0) {
+  if(data.length === 0) {
     data =products;
   }
 
@@ -75,12 +75,13 @@ const Home: FC<P> = ({ products, setProducts, filter }) => {
         <Input
           extraClasses=" w-full focus:outline-none mx-2 my-3 "
           placeholder="Search"
+          value={query}
           onChange={handleChange}
           onSelect={() => setShowTrends(!showTrends)}
         />
       </div>
 
-      {showTrends === true && products.length == 0 && <Trends />}
+      {showTrends === true && products.length === 0 && <Trends />}
       {products.length > 0 && <SearchResult data={data} />}
     </div>
   );

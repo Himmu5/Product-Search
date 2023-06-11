@@ -28,6 +28,7 @@ const FilterProduct: FC<P> = ({ products , filter ,setFilter }) => {
         if(e === s){
           isThere = true;
         }      
+        return;
       })
       if(isThere){
         let data = filter?.category.filter((category)=>{
@@ -52,7 +53,8 @@ const FilterProduct: FC<P> = ({ products , filter ,setFilter }) => {
       filter?.rating?.map((e)=>{
         if(e === s){
           isThere = true;
-        }      
+        }
+        return;      
       })
       if(isThere){
         let data = filter?.rating.filter((category)=>{
