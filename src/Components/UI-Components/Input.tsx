@@ -8,8 +8,8 @@ type P = {
 const Input: FC<P> = ({ extraClasses , ...rest }) => {
   return (
     <div className="flex w-full items-center relative z-5 shadow-md">
-      <input {...rest} className={"px-5 py-3 rounded-md " + extraClasses} />
-      <CiSearch size={25} className="text-gray-600 absolute right-1   "/>
+      <input {...rest} className={"px-5 py-3 rounded-md  focus:outline-none " + extraClasses} />
+      <CiSearch size={25} className="text-gray-600 absolute right-4   "/>
     </div>
   );
 };

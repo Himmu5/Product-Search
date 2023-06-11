@@ -1,21 +1,22 @@
-import { useState } from "react";
-import Input from "./Components/UI-Components/Input";
-import Trends from "./Components/UI-Components/Trends";
+import { useEffect, useState } from "react";
+import Home from "./Components/Page/Home";
+import SearchResult from "./Components/Page/SearchResult";
+import { getProductsByQuery } from "./Apis/products";
+import { productContext } from "./Context/Products";
+import { Product } from "./models/products";
 
 function App() {
-  const [showTrends, setShowTrends] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [products, setProducts] = useState<Product[]>([]);
+  console.log("products", products);
 
   return (
-    <div className=" flex flex-col items-center justify-center bg-cover bg-no-repeat h-screen bg-Home-BG ">
-      <div className="-mt-24 w-full max-w-4xl">
-        <Input
-          extraClasses=" w-full focus:outline-none "
-          placeholder="Search"
-          onSelect={()=>setShowTrends(!showTrends)}
-        />
-      </div>
-
-      {showTrends == true ? <Trends /> : <div></div>}
+    <div>
+      <productContext.Provider
+        value={{ products, setProducts, loading, setLoading }}
+      >
+        <Home />
+      </productContext.Provider>
     </div>
   );
 }
