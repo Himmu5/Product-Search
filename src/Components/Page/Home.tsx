@@ -66,7 +66,7 @@ const Home: FC<P> = ({ products, setProducts, filter }) => {
   }
 
   if(data.length === 0) {
-    data =products;
+    data = products;
   }
 
   return (

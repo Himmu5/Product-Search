@@ -9,8 +9,8 @@ function App() {
   const [ selectedProducts ,setSelectedProducts ] = useState<{[id:string]:Boolean}>({});
   const [filter ,setFilter] = useState<{category : string[] , rating :number[] , price :number[]}>();
 
+  console.log("Selected Products " , selectedProducts ) ;
 
-  console.log(  "filter ", filter)
   return (
     <div>
       <productContext.Provider

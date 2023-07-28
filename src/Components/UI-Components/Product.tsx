@@ -14,6 +14,14 @@ const ProductDetail: FC<P> = ({
   setSelectedProducts,
   selectedProducts,
 }) => {
+  let wishlisted = " ";
+  if (selectedProducts[product.id] === true) {
+    wishlisted = " text-red-500 "
+  }
+  else {
+    wishlisted = " text-white "
+  }
+  console.log("Selected Products : ", selectedProducts[product.id]);
   return (
     <div className=" w-56 flex flex-col  ">
       <div className="h-56 my-2 relative w-full flex flex-col group ">
@@ -34,14 +42,11 @@ const ProductDetail: FC<P> = ({
           <AiTwotoneHeart
             size={20}
             className={
-              " ml-48 outline-black absolute top-0 bottom-0 left-0 right-0 mt-2 mr-2 z-10 text-right hover:text-red-600 text-white outline-1 " +
-              (selectedProducts[product.id]
-                ? "  text-red-600 "
-                : " text-white ")
+              " ml-48 cursor-pointer outline-black absolute top-0 bottom-0 left-0 right-0 mt-2 mr-2 z-10 text-right hover:text-red-600  outline-1 " + wishlisted
             }
           />
         </div>
-        <div className="bg-blue-400 opacity-80 py-4 text-white absolute w-full  bottom-0 text-center hidden group-hover:block ">
+        <div className="bg-blue-400 opacity-80 py-4 text-white absolute w-full  bottom-0 text-center hidden group-hover:block h-[60px] ">
           View Product
         </div>
       </div>

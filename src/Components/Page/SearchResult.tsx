@@ -32,7 +32,7 @@ const SearchResult: FC<P> = ({ data }) => {
                   No Product
                 </div>
               )}
-              {data?.map((product) => {
+              {data.map((product) => {
                 return <ProductDetail product={product} />;
               })}
             </div>
